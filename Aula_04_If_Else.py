@@ -9,10 +9,31 @@
 
 ## Exercio 2
 
-num1 = int(input("Digite um número: "))
-if num1 == 0:
-    print(f'Número neutro')
-elif num1 > 0:
-    print(f'\nNumero positivo')
+# num1 = int(input("Digite um número: "))
+# if num1 == 0:
+#     print(f'Número neutro')
+# elif num1 > 0:
+#     print(f'\nNumero positivo')
+# else:
+#     print(f'\nNúmero negativo')
+
+
+# n1 = float(input("Digite um número: "))
+# n2 = float(input("Digite outro número: "))
+
+# # Compara número
+# if n1 == n2:
+#     print(f'Os números são iguais')
+# elif n1 > n2:
+#     print(f'O número {n1:.0f} é maior')
+# else:
+#     print(f'O número {n2:.0f} é maior')
+
+sexo = input('Sexo: "F" ou "M": ')
+
+if sexo == 'F' or sexo == 'f':
+    print('\nF - Feminino')
+elif sexo == 'M' or sexo == 'm':
+    print('\nM - Masculino')
 else:
-    print(f'\nNúmero negativo')
+    print('\nSexo biológico inválido')
