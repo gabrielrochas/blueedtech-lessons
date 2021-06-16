@@ -7,9 +7,9 @@ c = 0
 heaviest = 0.00
 lighter = 0.00
 
-while c in range(5):
+for c in range(5):
     weight[c] = uniform(10.00, 150.00)+c
-    print(f'Pessoa {c} - Peso {float(weight[c]):.2f}')
+    print(f'Pessoa {c+1} - Peso {float(weight[c]):.2f}')
     
     if heaviest < weight[c]:
         heaviest = weight[c]
@@ -20,5 +20,7 @@ while c in range(5):
         lighter = weight[c]
     c += 1
     
-print(f'Maior peso: {float(heaviest):.2f}')
-print(f'Menor peso: {float(lighter):.2f}')
+print(f'''\n
+Maior peso: {float(heaviest):.2f}
+Menor peso: {float(lighter):.2f}
+''')
