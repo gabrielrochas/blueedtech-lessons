@@ -8,10 +8,9 @@ from random import randint
 birthyear = {}
 age = {}
 curYear = date.today()
-c = 0
-underAge = ofAge = 0
+c = underAge = ofAge = 0
 
-while c < 7:
+for c in range(7):
     birthyear[c] = randint(1920, curYear.year)
     age[c] = curYear.year - birthyear[c]
     print(f'Idade pessoa {c+1}: {age[c]}')

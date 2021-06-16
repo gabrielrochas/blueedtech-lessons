@@ -10,7 +10,7 @@ while True:
     
     c = 1;
     print('Tabuada Multiplicação de ', num )
-    while c <= 10:
+    for c in range(1,10):
         val = num * c
         print(f'{c} x {num} = {val}')
         c += 1

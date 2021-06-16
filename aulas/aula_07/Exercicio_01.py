@@ -7,7 +7,7 @@ c = 0
 heaviest = 0.00
 lighter = 0.00
 
-while c < 5:
+while c in range(5):
     weight[c] = uniform(10.00, 150.00)+c
     print(f'Pessoa {c} - Peso {float(weight[c]):.2f}')
     
