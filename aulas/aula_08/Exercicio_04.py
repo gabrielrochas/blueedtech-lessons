@@ -19,12 +19,14 @@ questions = [
     'Já trabalhou com a vítima?'
 ]
 
+results = ['inocente', 'suspeito', 'cúmplice', 'assassino']
+
 print('Vou fazer algumas perguntas. Por favor, responda "sim" ou "não"\n')
 sleep(2)
 for question in questions:
-    print(question)
+    # print(question)
     for i in range(0,3):
-        answer = str(input('Sim ou Não? ')).lower()[0]
+        answer = str(input(f'{question[i]} Sim ou Não? ')).lower()[0]
         if answer == 'n': # if answer is No break and no count.
             break
 
@@ -36,11 +38,11 @@ for question in questions:
             print(f'Resposta errada.\nVou perguntar novamente: {question}')
         
         if i == 1:
-            print('Você só tem mais uma change.\nCuidado, se errado novamente vou considerar a sua resposta como SIM!')
+            print('Você só tem mais uma change.\nCuidado! Se responder errado novamente vou considerar a sua resposta como SIM!')
         
         if i == 2:
             count += 1
-        i += 1
+        # i += 1
         sleep(1)
     print('\n')
 sleep(1)
@@ -54,11 +56,12 @@ for i in range(3):
     i += 1
     sleep(1)
 print('\n')
-if count < 0 and count >= 2:
-    print('Você é suspeito do crime. Voltaremos a fazer contato contigo.')
-elif count >= 3 and count <= 4:
-    print('Você foi considerado cúmplice. Ficará sob custódia da justiça')
-elif count == 5:
-    print('Você foi considerado culpado. Seguirá diretamente para o presídio')
-else:
-    print('Você está livre')
+
+# if count < 0 and count >= 2:
+#     print('Você é suspeito do crime. Voltaremos a fazer contato contigo.')
+# elif count >= 3 and count <= 4:
+#     print('Você foi considerado cúmplice. Ficará sob custódia da justiça')
+# elif count == 5:
+#     print('Você foi considerado culpado. Seguirá diretamente para o presídio')
+# else:
+#     print('Você está livre')

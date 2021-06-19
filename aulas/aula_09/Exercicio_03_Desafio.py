@@ -3,12 +3,18 @@
 # números entre 1 e 60 para cada jogo, cadastrando tudo em uma lista composta
 from random import randint
 numbers = []
-games = int(input('Digite quantos jogos deseja fazer? '))
+games = int(input('Digite quantos jogos deseja fazer: '))
 i = x = 0
 for i in range(games):
     numbers.append([])
     for x in range(6):
-        numbers[i].append(randint(1,60))
+        num = randint(1,60)
+        if num not in numbers:
+            numbers[i].append(num)
+        else:
+            print(f'Número {num} já existe na lista')
+            x =- 1
+    numbers[i].sort();
 i = 1
 for num in numbers:
     print(f'Jogo {i}: ', end=" ")
