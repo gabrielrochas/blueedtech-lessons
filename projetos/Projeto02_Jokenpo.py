@@ -10,19 +10,115 @@
 #   vitórias de cada um (computador e jogador);
 # • Perguntar se o Jogador quer jogar novamente, se sim inicie volte a escolha 
 #   de quantidade de rodadas, se não finalize o programa.
-
+import os;
+from random import randrange;
+from art import *;
+from time import sleep;
 ### Rock Paper Scissors ###
-
-# from art import *
-# options = ['Pedra','Papel','Tesoura'];
-print('Rock Paper Scissors');
+tprint('Rock Paper Scissors');
+tprint('Vamos jogar JOKENPO?');
+sleep(5)
+loading = '...'
+os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
+userName = str(input('Por favor, me diga o seu nome: ')).strip().capitalize()
+for p in loading: print(p),sleep(1)
+os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
+options = ['Pedra','Papel','Tesoura']; # Jokenpo options
 while True:
-    rounds = str(input('Digite Quantas rodadas deseja jogar: ')).strip()[0]
-    if rounds.isnumeric():
-        break;
+    # Show options to user and let him/her to pick one
+    # Execute until user do enter a numeric value
+    while True:
+        print('|','='*len(userName),'======================================|');
+        rounds = str(input(f'| {userName}, digite quantas rodadas deseja jogar: ')).strip();
+        if rounds.isnumeric(): # check if user enter a numeric value
+            if int(rounds) > 5: # avoid to the choice a huge number of rounds
+                print('-'*55);
+                check = str(input(f'Você tem certeza que quer jogar {int(rounds)} rodadas [Sim ou Não]? ')).strip().lower()[0];
+                if check == 's':
+                    for p in loading: print(p),sleep(0.5);
+                    break;
+                else:
+                    print('Tente novamente\n');
+                    for p in loading: print(p),sleep(0.5);
+                    os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
+                    continue;
+            else:
+                for p in loading: print(p),sleep(0.5);
+                break;
+        else:
+            print('Opção inválida. Você deve digitar um número inteiro\n');
+            for p in loading: print(p),sleep(0.8);
+    os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
+    draws = wins = losts = 0; 
+    # Execute until the number of rounds informed above
+    for y in range(int(rounds)):
+        # Execute until user do the rigth choice
+        while True:
+            tprint(f'Round - {y+1}');
+            if y > 0:
+                tprint(f'{userName}  {wins }  x  {losts}  Computador');
+            print('|================================|');
+            print('| Escolha uma das opções abaixo  |');
+            print('|================================|');
+            i = 0;
+            # Show options
+            for option in options:
+                i += 1;
+                print(f'| Digite {i} para: ', end=' ');
+                for opt in option:
+                    print(opt, end='');
+                print('\n');
+            print('|================================|');
+            # Pick up user choice
+            choice = str(input('| Digite a sua escolha: ')).strip().lower()[0];
+            computerChoice = randrange(0,len(options)); #Computer choice
+            # If user do not pick up a rigth coiche
+            if choice not in '123':
+                print(' Opção inválida. Você deve digitar 1, 2 ou 3 de acordo com as opções abaixo.\nTente novamente.\n');
+                for p in loading: print(p),sleep(1)
+                os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
+            else:
+                userChoice = int(choice)-1;
+                print('|================================|');
+                print(f'| A sua escolha foi: {options[userChoice].upper()}');
+                print('|================================|');
+                print(f'| O computador escolheu: {options[computerChoice].upper()}');
+                print('|================================|');
+                for p in loading: print(p),sleep(1)
+                print('|================================|');
+                if userChoice == computerChoice:
+                    tprint('Empate');
+                    draws += 1
+                elif userChoice == 0 and computerChoice == 2:
+                    tprint('Ponto para voce')
+                    wins += 1
+                elif userChoice == 1 and computerChoice == 0:
+                    tprint('Ponto para voce')
+                    wins += 1
+                elif userChoice == 2 and computerChoice == 1:
+                    tprint('Ponto para voce')
+                    wins += 1
+                else:
+                    tprint('Ponto para o computador')
+                    losts += 1
+                # print('|================================|');
+                for p in loading: print(p), sleep(1)
+                os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
+                break;
+    # Who wins?
+    if wins == losts:
+        winner = 'Deu empate!'; # Draw
+    elif wins > losts:
+        winner = 'Voce ganhou!!!' # User wins
     else:
-        print('Opção inválida. Você deve digitar um número inteiro\n');
-
-for i in range(int(rounds)):
-    for option in options:
-        print(option);
+        winner = 'Computador ganhou!' # Computer wins
+    if rounds != 0:
+        tprint(f'{userName}  {wins}  x  {losts}  Computador');
+        tprint(f'{winner}')
+    # Ask if user want to play again
+    print('|===================================|');
+    if rounds != 0:
+        playAgain = str(input('| Deseja jogar novamente Sim ou Não? ')).strip().lower()[0];
+    rounds = 0; # Reset rounds number just in case the user restart the game and give up to play again
+    if playAgain != 's':
+        break;
