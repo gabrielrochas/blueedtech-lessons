@@ -12,9 +12,6 @@ for x in range(3):
         # Soma de todos os números pares
         if matrix[x][y] % 2 == 0:
             even += matrix[x][y]
-
-        if matrix[1][y] > line2:
-            line2 = matrix[x][y]
 for line in matrix:
     for number in line:
         print(f'[ {number} ]', end=' ')
@@ -22,4 +19,4 @@ for line in matrix:
 print(f'''
 A soma de todos os valores pares é: {even}
 A soma de todos os da linha 3 é: {sum(matrix[2])}
-O maior valor da linha 2 é: {line2}''')
+O maior valor da linha 2 é: {max(matrix[1])}''')
