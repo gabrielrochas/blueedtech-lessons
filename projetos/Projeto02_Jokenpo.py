@@ -15,13 +15,16 @@ from random import randrange;
 from art import *;
 from time import sleep;
 ### Rock Paper Scissors ###
-tprint('Rock Paper Scissors');
-tprint('Vamos jogar JOKENPO?');
-sleep(5)
+tprint('Vamos jogar', font='small')
+tprint('JoKenPo?');
+sleep(3);
 loading = '...'
 os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
-userName = str(input('Por favor, me diga o seu nome: ')).strip().capitalize()
-for p in loading: print(p),sleep(1)
+for p in loading: print(p),sleep(1);
+os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
+print('|================================|');
+userName = str(input('| Por favor, me diga o seu nome: ')).strip().capitalize();
+for p in loading: print(p),sleep(0.6);
 os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
 options = ['Pedra','Papel','Tesoura']; # Jokenpo options
 while True:
@@ -31,6 +34,7 @@ while True:
         print('|','='*len(userName),'======================================|');
         rounds = str(input(f'| {userName}, digite quantas rodadas deseja jogar: ')).strip();
         if rounds.isnumeric(): # check if user enter a numeric value
+            if rounds == '0': break;
             if int(rounds) > 5: # avoid to the choice a huge number of rounds
                 print('-'*55);
                 check = str(input(f'Você tem certeza que quer jogar {int(rounds)} rodadas [Sim ou Não]? ')).strip().lower()[0];
@@ -54,9 +58,10 @@ while True:
     for y in range(int(rounds)):
         # Execute until user do the rigth choice
         while True:
-            tprint(f'Round - {y+1}');
-            if y > 0:
-                tprint(f'{userName}  {wins }  x  {losts}  Computador');
+            tprint(f'Round - {y+1}',font='small');
+            if y > 0: 
+                tprint(f'{userName} - {wins}', font='small');
+                tprint(f'Computador - {losts}', font='small')
             print('|================================|');
             print('| Escolha uma das opções abaixo  |');
             print('|================================|');
@@ -88,37 +93,43 @@ while True:
                 print('|================================|');
                 if userChoice == computerChoice:
                     tprint('Empate');
-                    draws += 1
+                    draws += 1;
                 elif userChoice == 0 and computerChoice == 2:
-                    tprint('Ponto para voce')
-                    wins += 1
+                    tprint('Ponto para voce');
+                    wins += 1;
                 elif userChoice == 1 and computerChoice == 0:
-                    tprint('Ponto para voce')
-                    wins += 1
+                    tprint('Ponto para voce');
+                    wins += 1;
                 elif userChoice == 2 and computerChoice == 1:
-                    tprint('Ponto para voce')
-                    wins += 1
+                    tprint('Ponto para voce');
+                    wins += 1;
                 else:
-                    tprint('Ponto para o computador')
-                    losts += 1
+                    tprint('Ponto para o computador');
+                    losts += 1;
                 # print('|================================|');
-                for p in loading: print(p), sleep(1)
+                for p in loading: print(p), sleep(1);
                 os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
                 break;
     # Who wins?
-    if wins == losts:
-        winner = 'Deu empate!'; # Draw
-    elif wins > losts:
-        winner = 'Voce ganhou!!!' # User wins
-    else:
-        winner = 'Computador ganhou!' # Computer wins
-    if rounds != 0:
-        tprint(f'{userName}  {wins}  x  {losts}  Computador');
-        tprint(f'{winner}')
+    if wins == losts: winner = 'Deu empate!'; # Draw
+    elif wins > losts: winner = 'Voce ganhou!!!' # User wins
+    else: winner = 'Computador ganhou!' # Computer wins
+    # 
+    if rounds == '0':
+        tprint('Jogo encerrado');
+        for p in loading: print(p), sleep(0.6);
+        os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
+        break;
+    tprint(f'{userName} {wins} x {losts} Computador', font='small');
+    tprint(f'{winner}');
     # Ask if user want to play again
     print('|===================================|');
-    if rounds != 0:
-        playAgain = str(input('| Deseja jogar novamente Sim ou Não? ')).strip().lower()[0];
-    rounds = 0; # Reset rounds number just in case the user restart the game and give up to play again
+    playAgain = str(input('| Deseja jogar novamente Sim ou Não? ')).strip().lower()[0];
     if playAgain != 's':
+        tprint('Jogo encerrado');
+        for p in loading: print(p), sleep(0.6)
+        os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
         break;
+    for p in loading: print(p), sleep(0.6)
+    os.system('cls' if os.name == 'nt' else 'clear'); # clear terminal
+    # rounds = '0'; # Reset rounds number just in case the user restart the game and give up to play again
