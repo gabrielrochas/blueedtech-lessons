@@ -8,12 +8,13 @@ from time import sleep
 import os
 persons = []
 underAge = ofAge = 0
+# Gera 5 pessoas com nome e idade aleatórios
 for x in range(5):
     persons.append([])
     for y in range(1):
         persons[x].append(get_first_name())
         persons[x].append(randint(1,100))
-        
+        # Verifica se maior ou menor de idade
         if persons[x][1] < 18:
             underAge += 1
         else:
@@ -22,9 +23,10 @@ for x in range(5):
 minor = 'menores' if underAge > 1 else 'menor'
 major = 'maiores' if ofAge > 1 else 'maior'
 # Imprimindo lista de nomes
+os.system('cls' if os.name == 'nt' else 'clear') # Limpa terminal
 for x, y in persons:
     age = 'maior' if y > 18 else 'menor'
     print(f'{x} é {age} de idade')
-print(f'A liste tem {underAge} {minor} e tem {ofAge} {major}')
-sleep(10)
-os.system('cls' if os.name == 'nt' else 'clear')
+print(f'A lista tem {underAge} {minor} e tem {ofAge} {major}')
+sleep(5)
+os.system('cls' if os.name == 'nt' else 'clear') # Limpa terminal
