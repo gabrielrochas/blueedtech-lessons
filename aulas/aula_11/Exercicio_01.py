@@ -2,7 +2,7 @@
 # Se por acaso a CTPS for diferente de 0, o dicionário receberá também o ano de contratação e o salário. 
 # Calcule e acrescente , além da idade , com quantos anos a pessoa vai se aposentar. 
 # Considere que o trabalhador deve contribuir por 35 anos para se aposentar.
-from os import replace
+
 from names import get_first_name;
 from random import randint;
 from datetime import date;
@@ -27,12 +27,12 @@ if worker.get('ctps') != 0:
         # ageToRetired or timeToRetired depends wich is smaller
         worker['retiredYear'] = (currentYear + ageToRetire) if ageToRetire < timeToRetire else (currentYear + timeToRetire);
         if ageToRetire == 0 or timeToRetire == 0:
-            print('Vá curtir a sua velhice')
+            retire= 'Vá curtir a sua velhice';
         elif ageToRetire < timeToRetire:
-            print('Pessoa aposenta por idade')
+            retire= 'Pessoa aposenta por idade';
         else:
-            print('Pessoa aposenta por tempo de serviço')
-print();
+            retire= 'Pessoa aposenta por tempo de serviço';
+print(f'\n{retire}');
 for i, d in worker.items():
-    print(i,' - ', d);
+    print(i.capitalize(),' - ', d);
 # print(worker);
