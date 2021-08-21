@@ -1,1 +1,2 @@
-This is my first git project!
+# My Bluemer Journey
+I'll updated repository constantly.
