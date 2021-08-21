@@ -29,11 +29,16 @@
 # else:
 #     print(f'O número {n2:.0f} é maior')
 
-sexo = input('Sexo: "F" ou "M": ').strip().upper()[0]
+# sexo = input('Sexo: "F" ou "M": ').strip().upper()[0]
 
-if sexo == 'F':
-    print('\nF - Feminino')
-elif sexo == 'M':
-    print('\nM - Masculino')
-else:
-    print('\nSexo biológico inválido')
+# if sexo == 'F':
+#     print('\nF - Feminino')
+# elif sexo == 'M':
+#     print('\nM - Masculino')
+# else:
+#     print('\nSexo biológico inválido')
+
+i = 1
+for i in range(11):
+    print(i*9)
+    i += 1
