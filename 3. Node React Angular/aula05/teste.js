@@ -1,4 +1,13 @@
-let sum = (n1, n2) => n1 + n2
-let mult = (n1, n2, n3) => sum(n1, n2) + n3
+function rangeOfNumbers(startNum, endNum) {
+  if (endNum < 1) {
+    return [];
+  } else {
+    const arr = rangeOfNumbers(startNum, endNum - 1);
+    if (endNum >= startNum) {
+      arr.push(endNum);
+    }
+    return arr;
+  }
+}
 
-console.log(mult(3,2, 3))
+console.log(rangeOfNumbers(5, 6));
